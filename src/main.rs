@@ -21,21 +21,21 @@ fn main() {
         .get_matches();
     if matches.is_present("Crc") && matches.value_of("Crc").unwrap().to_string() == "32" {
         use crc::{Crc, CRC_32_ISO_HDLC};
-        println!("{}", Crc::<u32>::new(&CRC_32_ISO_HDLC).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
+        println!("{:x}", Crc::<u32>::new(&CRC_32_ISO_HDLC).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
         std::process::exit(1);
     }
     if matches.is_present("Crc") && matches.value_of("Crc").unwrap().to_string() == "16" {
         use crc::{Crc, CRC_16_ARC};
-        println!("{}", Crc::<u16>::new(&CRC_16_ARC).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
+        println!("{:x}", Crc::<u16>::new(&CRC_16_ARC).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
         std::process::exit(1);
     }
     if matches.is_present("Crc") && matches.value_of("Crc").unwrap().to_string() == "64" {
         use crc::{Crc, CRC_64_ECMA_182};
-        println!("{}", Crc::<u64>::new(&CRC_64_ECMA_182).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
+        println!("{:x}", Crc::<u64>::new(&CRC_64_ECMA_182).checksum(matches.value_of("INPUT").unwrap().to_string().as_ref()));
         std::process::exit(1);
     }
     if matches.is_present("md") && matches.value_of("md").unwrap().to_string() == "5" {
-        println!("{}", format!("{:x}", md5::compute(matches.value_of("INPUT").unwrap().to_string())));
+        println!("{:x}", md5::compute(matches.value_of("INPUT").unwrap().to_string()));
         std::process::exit(1);
     }
     if matches.is_present("md") && matches.value_of("md").unwrap().to_string() == "2" {
